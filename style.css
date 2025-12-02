@@ -1,0 +1,343 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --cor-principal: #1A375A;
+    --cor-fundo: #F5F5F5;
+    --cor-texto: #333;
+    --cor-botoes: #1A375A;
+    --cor-final-semana: #CC0000;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.top-bar {
+    background-color: black;
+    color: white;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 12px;
+    align-items: center;
+}
+
+.mobile-container {
+    width: 100%;
+    max-width: 375px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.header-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.header-icons a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 375px;
+    text-align: center;
+    padding: 5px;
+    font-size: 0.7em;
+    color: #AAA;
+    background: white;
+    border-top: 1px solid #EEE;
+    z-index: 10;
+}
+
+.app-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    margin: 20px 0;
+    background-color: var(--cor-botoes);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.agenda-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 80px;
+    max-width: 375px;
+}
+
+.agenda-header-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--cor-texto);
+    margin-left: -20px;
+}
+
+.back-icon {
+    font-size: 1.7em;
+    color: var(--cor-principal);
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 330px;
+    margin-top: 50px;
+}
+
+.calendar-month {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 10px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cor-texto);
+}
+
+.calendar-month-nav {
+    font-size: 1em;
+    cursor: pointer;
+    color: var(--cor-texto);
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0px;
+    text-align: center;
+}
+
+.calendar-day-header {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: #444;
+    text-transform: uppercase;
+    padding: 10px 0;
+    margin-bottom: 5px;
+}
+
+.calendar-day-header:nth-child(1), .calendar-day-header:nth-child(7) {
+    color: var(--cor-final-semana);
+}
+
+.calendar-day {
+    font-size: 1em;
+    font-weight: 500;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px auto;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    background-color: #F0F0F0;
+    color: #333;
+    font-weight: 600;
+}
+
+.day-inactive {
+    color: #AAA;
+    background-color: transparent;
+    pointer-events: none;
+    font-weight: 400;
+}
+
+.day-selected {
+    background-color: var(--cor-principal);
+    color: white !important;
+    font-weight: bold;
+}
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.hidden {
+    display: none;
+}
+
+.popup-content {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.popup-content button {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--cor-principal);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.popup-content button.close {
+    background: #777;
+}
+
+.reserva-card {
+    background: #FFF;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reserva-info {
+    text-align: left;
+    font-size: 0.9em;
+}
+
+.btn-excluir {
+    background: #CC0000;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#popup-login input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+
+.faq-item {
+    background: #F0F0F0;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.faq-item:hover {
+    background: #e0e0e0;
+}
+
+.faq-answer {
+    display: none;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+
+
+.reserva-item {
+    background-color: #f7f7f7;
+    border-left: 5px solid var(--cor-principal);
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.reserva-item h3 {
+    margin-top: 0;
+    color: var(--cor-principal);
+    font-size: 1.1em;
+}
+
+.reserva-item p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: var(--cor-texto);
+}
+
+.btn-cancelar-reserva {
+    background-color: #CC0000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    float: right;
+}
